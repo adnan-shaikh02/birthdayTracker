@@ -40,12 +40,11 @@ body,
     padding: 16px;
   }
 
+  .fc-view-harness-active {
+    height: 330px !important;
+  }
+
   /* .homepageFullPageCal {
     min-height: calc(100vh - 56px - 25vh);
   } */
-   :global {
-    .fc-toolbar-chunk {
-      display: flex;
-    }
-   }
 }

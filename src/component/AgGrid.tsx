@@ -1,34 +1,54 @@
 import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
+import type { ColDef } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { themeQuartz } from "ag-grid-community";
+import type { header } from "./vaiableTypes";
+import eventDetailJson from "../data/source.json";
 
 // Register all Community features
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 function AgGrid() {
-  // Row Data: The data to be displayed.
-  const [rowData] = useState([
-    { make: "Tesla", model: "Model Y", price: 64950, electric: true },
-    { make: "Ford", model: "F-Series", price: 33850, electric: false },
-    { make: "Toyota", model: "Corolla", price: 29600, electric: false },
+  const [rowData] = useState<header[]>(
+    eventDetailJson.map((item: any) => ({
+      Month: item.month,
+      Name: item.name,
+      Date: item.date,
+      Event: item.event,
+    }))
+  );
+
+  // Column Definitions: Responsive columns
+  const isSmallScreen = window.innerWidth < 768;
+  const [colDefs] = useState<ColDef<header>[]>([
+    { field: "Month", resizable: false, flex: isSmallScreen ? 0 : 1, rowDrag: false, suppressMovable: true },
+    { field: "Name", resizable: false, flex: isSmallScreen ? 0 : 1, rowDrag: false, suppressMovable: true },
+    { field: "Date", resizable: false, flex: isSmallScreen ? 0 : 1, rowDrag: false, suppressMovable: true },
+    { field: "Event", resizable: false, flex: isSmallScreen ? 0 : 1, rowDrag: false, suppressMovable: true },
   ]);
 
-  // Column Definitions: Defines the columns to be displayed.
-  const [colDefs] = useState([
-    { field: "make" },
-    { field: "model" },
-    { field: "price" },
-    { field: "electric" },
-  ]);
+  // Responsive container styles
+  const containerStyle = useMemo(() => {
+    const isSmallScreen = window.innerWidth < 768;
+    return {
+      height: "100%",
+      width: "100%",
+      display: "flex",
+      flexDirection: "column" as const,
+      padding: isSmallScreen ? "10px" : "20px",
+      flexgrow: isSmallScreen ? 0 : 1,
+    };
+  }, []);
 
   return (
-    <div style={{ height: "100%", width: "100%", display: "flex", flexDirection: "column" }}>
+    <div style={containerStyle}>
       <AgGridReact 
         rowData={rowData} 
         columnDefs={colDefs}
         theme={themeQuartz}
-        style={{ height: "100%", width: "100%" }}
+        domLayout="autoHeight"
+        suppressHorizontalScroll={false}
       />
     </div>
   );
