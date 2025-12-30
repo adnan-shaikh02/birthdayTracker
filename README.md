@@ -40,3 +40,8 @@ npm run dev
 ### 🔹 Start Development Server plus preview on other local devices
 ```bash
 npm run dev -- --host
+```
+### 🔹 Run Test Cases
+```bash
+npm run test
+```

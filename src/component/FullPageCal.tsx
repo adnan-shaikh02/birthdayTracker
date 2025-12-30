@@ -5,6 +5,7 @@ import { useState } from "react";
 
 function FullPageCalendar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
 
   const handleModalClose = () => {
@@ -12,6 +13,7 @@ function FullPageCalendar() {
     setSelectedEvent(null);
   };
 
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleEventClickWrapper = (clickInfo: any) => {
     setSelectedEvent(clickInfo.event);
     setIsModalOpen(true);
@@ -67,6 +69,7 @@ function FullPageCalendar() {
 
 
 function eventDetail() {
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
   return eventDetailJson.map((item: any) => ({
     title: item.event + " - " + item.name,
     date: item.format,

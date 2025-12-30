@@ -19,6 +19,7 @@ function Navbar({ onSwitchChange }: NavbarProps) {
             <div className="navbar-title">Event Diaries</div>
             <label className="toggle-switch">
                 <input
+                    data-testid="toggle-switch"
                     type="checkbox"
                     checked={isSwitchEnabled}
                     onChange={handleSwitchChange}
