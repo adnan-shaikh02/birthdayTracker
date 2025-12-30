@@ -22,10 +22,38 @@ function AgGrid() {
   // Column Definitions: Responsive columns
   const isSmallScreen = window.innerWidth < 768;
   const [colDefs] = useState<ColDef<header>[]>([
-    { field: "Month", resizable: false, flex: isSmallScreen ? 0 : 1, rowDrag: false, suppressMovable: true },
-    { field: "Name", resizable: false, flex: isSmallScreen ? 0 : 1, rowDrag: false, suppressMovable: true },
-    { field: "Date", resizable: false, flex: isSmallScreen ? 0 : 1, rowDrag: false, suppressMovable: true },
-    { field: "Event", resizable: false, flex: isSmallScreen ? 0 : 1, rowDrag: false, suppressMovable: true },
+    { 
+      field: "Month", 
+      resizable: false, 
+      flex: isSmallScreen ? 0 : 1, 
+      rowDrag: false, 
+      suppressMovable: true,
+      headerClass: "colored-header"
+    },
+    { 
+      field: "Name", 
+      resizable: false, 
+      flex: isSmallScreen ? 0 : 1, 
+      rowDrag: false, 
+      suppressMovable: true,
+      headerClass: "colored-header"
+    },
+    { 
+      field: "Date", 
+      resizable: false, 
+      flex: isSmallScreen ? 0 : 1, 
+      rowDrag: false, 
+      suppressMovable: true,
+      headerClass: "colored-header"
+    },
+    { 
+      field: "Event", 
+      resizable: false, 
+      flex: isSmallScreen ? 0 : 1, 
+      rowDrag: false, 
+      suppressMovable: true,
+      headerClass: "colored-header"
+    },
   ]);
 
   // Responsive container styles

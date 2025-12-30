@@ -51,11 +51,12 @@ function FullPageCalendar() {
               boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
               maxWidth: "500px",
               width: "90%",
+              fontFamily: "'Segoe UI', 'Poppins', 'Inter', sans-serif",
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 style={{ margin: 0, marginBottom: "20px" }}>{selectedEvent.title}</h2>
-            <p>
+            <h2 style={{ margin: 0, marginBottom: "20px", fontFamily: "'Poppins', 'Segoe UI', sans-serif", fontSize: "28px", fontWeight: "700", color: "#111827" }}>{selectedEvent.title}</h2>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "16px", color: "#6b7280", lineHeight: "1.6" }}>
               <strong>Date:</strong> {selectedEvent.startStr}
             </p>
           </div>
@@ -67,9 +68,20 @@ function FullPageCalendar() {
 
 
 function eventDetail() {
-  return eventDetailJson.map((item: any) => ({
+  // Standard color palette
+  const colors = [
+    "#FF6B6B", // red
+    "#3498DB", // blue
+    "#2ECC71", // green
+    "#FF69B4", // pink
+  ];
+
+  return eventDetailJson.map((item: any, index: number) => ({
     title: item.event + " - " + item.name,
     date: item.format,
+    backgroundColor: colors[index % colors.length],
+    borderColor: colors[index % colors.length],
+    textColor: "#000000",
   }));
 }
 
