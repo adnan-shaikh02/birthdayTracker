@@ -1,5 +1,12 @@
 [
   {
+    "month": "December",
+    "name": "Noorjahan",
+    "date": "30th December",
+    "event": "Birthday",
+    "format": "2025-12-30"
+  },
+  {
     "month": "January",
     "name": "Atik & Parveen",
     "date": "8th January",
@@ -22,6 +29,7 @@
   },
   {
     "month": "February",
+
     "name": "Nana(Rahmatullah)",
     "date": "10th February",
     "event": "Birthday",
@@ -232,14 +240,14 @@
   },
   {
     "month": "December",
-    "name": "Nani(Noorjahan)",
+    "name": "Noorjahan",
     "date": "23rd December",
     "event": "Demise",
     "format": "2026-12-23"
   },
   {
     "month": "December",
-    "name": "Nani(Noorjahan)",
+    "name": "Noorjahan",
     "date": "30th December",
     "event": "Birthday",
     "format": "2026-12-30"

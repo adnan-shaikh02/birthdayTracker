@@ -5,6 +5,7 @@ import { useState } from "react";
 
 function FullPageCalendar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
 
   const handleModalClose = () => {
@@ -12,6 +13,7 @@ function FullPageCalendar() {
     setSelectedEvent(null);
   };
 
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleEventClickWrapper = (clickInfo: any) => {
     setSelectedEvent(clickInfo.event);
     setIsModalOpen(true);
@@ -76,7 +78,7 @@ function eventDetail() {
     "#FF69B4", // pink
   ];
 
-  return eventDetailJson.map((item: any, index: number) => ({
+  return eventDetailJson.map((item: EventItem, index: number) => ({
     title: item.event + " - " + item.name,
     date: item.format,
     backgroundColor: colors[index % colors.length],
@@ -84,5 +86,4 @@ function eventDetail() {
     textColor: "#000000",
   }));
 }
-
 export default FullPageCalendar;

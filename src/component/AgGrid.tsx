@@ -11,6 +11,7 @@ ModuleRegistry.registerModules([AllCommunityModule]);
 
 function AgGrid() {
   const [rowData] = useState<header[]>(
+    //eslint-disable-next-line @typescript-eslint/no-explicit-any
     eventDetailJson.map((item: any) => ({
       Month: item.month,
       Name: item.name,
