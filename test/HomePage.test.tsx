@@ -1,7 +1,7 @@
 import React from "react";
+import "@testing-library/jest-dom";
 import HomePage from "../src/HomePage";
-import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, it, expect, render, screen } from "./baseTestSetupFile";
 
 describe("HomePage Component", () => {
   it("should render HomePage Navbar Title Correctly", () => {
