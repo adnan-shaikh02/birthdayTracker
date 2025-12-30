@@ -14,15 +14,15 @@ function App() {
 
   return (
     <>
-      <div className="homepageNavbar">
+      <div className="homepageNavbar" data-testid="navbar-component">
         <Navbar onSwitchChange={handleToggle} />
       </div>
 
-      <div className="homepageTitleContent">
+      <div className="homepageTitleContent" data-testid="titlecontent-component">
         <TitleContent />
       </div>
 
-      <div className="homepageFullPageCal">
+      <div className="homepageFullPageCal" data-testid={showCalendar ? "calendar-component" : "aggrid-component"}>
         {showCalendar ? <FullPageCalendar /> : <AgGrid />}
       </div>
     </>
