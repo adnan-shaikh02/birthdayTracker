@@ -32,14 +32,9 @@ function secondaryTitle() {
   if (todayEvents.length > 0) {
     const eventNames = todayEvents.map((event) => event.name).join(", ");
     const eventType = todayEvents[0].event;
-    return (
-      <h2>
-        Today is {eventNames} {eventType}
-      </h2>
-    );
-  } else {
-    return <h2>No events for Today</h2>;
+    return <>Today is {eventNames} {eventType}</>;
   }
+  return <>No events for today</>;
 }
 
 export default TitleContent;
