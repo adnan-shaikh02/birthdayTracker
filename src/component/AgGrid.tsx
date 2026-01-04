@@ -23,10 +23,34 @@ function AgGrid() {
   // Column Definitions: Responsive columns
   const isSmallScreen = window.innerWidth < 768;
   const [colDefs] = useState<ColDef<header>[]>([
-    { field: "Month", resizable: false, flex: isSmallScreen ? 0 : 1, rowDrag: false, suppressMovable: true },
-    { field: "Name", resizable: false, flex: isSmallScreen ? 0 : 1, rowDrag: false, suppressMovable: true },
-    { field: "Date", resizable: false, flex: isSmallScreen ? 0 : 1, rowDrag: false, suppressMovable: true },
-    { field: "Event", resizable: false, flex: isSmallScreen ? 0 : 1, rowDrag: false, suppressMovable: true },
+    {
+      field: "Month",
+      resizable: false,
+      flex: isSmallScreen ? 0 : 1,
+      rowDrag: false,
+      suppressMovable: true,
+    },
+    {
+      field: "Name",
+      resizable: false,
+      flex: isSmallScreen ? 0 : 1,
+      rowDrag: false,
+      suppressMovable: true,
+    },
+    {
+      field: "Date",
+      resizable: false,
+      flex: isSmallScreen ? 0 : 1,
+      rowDrag: false,
+      suppressMovable: true,
+    },
+    {
+      field: "Event",
+      resizable: false,
+      flex: isSmallScreen ? 0 : 1,
+      rowDrag: false,
+      suppressMovable: true,
+    },
   ]);
 
   // Responsive container styles
@@ -43,15 +67,20 @@ function AgGrid() {
   }, []);
 
   return (
-    <div style={containerStyle}>
-      <AgGridReact 
-        rowData={rowData} 
-        columnDefs={colDefs}
-        theme={themeQuartz}
-        domLayout="autoHeight"
-        suppressHorizontalScroll={false}
-      />
-    </div>
+    <>
+      <div style={containerStyle}>
+        <AgGridReact
+          rowData={rowData}
+          columnDefs={colDefs}
+          theme={themeQuartz}
+          domLayout="autoHeight"
+          suppressHorizontalScroll={false}
+        />
+      </div>
+      <div className="subsBtn">
+        <a href="https://calendar.google.com/calendar/u/0?cid=OTFmYWNjZmM2NDM0OTI1NjZhZWZjMTc2NDUyMWVkODU3YWQ2ZjNmZDRhM2RhYWJjMzBkMWEyNWU3OTQyZGEzMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" className="subscribe-button">Subscribe this Calendar</a>
+      </div>
+    </>
   );
 }
 

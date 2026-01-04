@@ -56,7 +56,9 @@ function FullPageCalendar() {
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 style={{ margin: 0, marginBottom: "20px" }}>{selectedEvent.title}</h2>
+            <h2 style={{ margin: 0, marginBottom: "20px" }}>
+              {selectedEvent.title}
+            </h2>
             <p>
               <strong>Date:</strong> {selectedEvent.startStr}
             </p>
@@ -67,12 +69,13 @@ function FullPageCalendar() {
   );
 }
 
-
 function eventDetail() {
+  const color = ["Red", "Blue", "Green", "Purple"];
   //eslint-disable-next-line @typescript-eslint/no-explicit-any
   return eventDetailJson.map((item: any) => ({
     title: item.event + " - " + item.name,
     date: item.format,
+    color: color[Math.floor(Math.random() * color.length)],
   }));
 }
 
