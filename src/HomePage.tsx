@@ -18,11 +18,17 @@ function App() {
         <Navbar onSwitchChange={handleToggle} />
       </div>
 
-      <div className="homepageTitleContent" data-testid="titlecontent-component">
+      <div
+        className="homepageTitleContent"
+        data-testid="titlecontent-component"
+      >
         <TitleContent />
       </div>
 
-      <div className="homepageFullPageCal" data-testid={showCalendar ? "calendar-component" : "aggrid-component"}>
+      <div
+        className="homepageFullPageCal"
+        data-testid={showCalendar ? "calendar-component" : "aggrid-component"}
+      >
         {showCalendar ? <FullPageCalendar /> : <AgGrid />}
       </div>
     </>

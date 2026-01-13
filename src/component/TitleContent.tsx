@@ -32,7 +32,11 @@ function secondaryTitle() {
   if (todayEvents.length > 0) {
     const eventNames = todayEvents.map((event) => event.name).join(", ");
     const eventType = todayEvents[0].event;
-    return <>Today is {eventNames} {eventType}</>;
+    return (
+      <>
+        Today is {eventNames} {eventType}
+      </>
+    );
   }
   return <>No events for today</>;
 }
