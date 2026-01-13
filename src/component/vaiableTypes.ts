@@ -4,4 +4,3 @@ export type header = {
   Date: string;
   Event: string;
 };
-
