@@ -1,7 +1,7 @@
 import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
 import type { ColDef } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo } from "react";
 import { themeQuartz } from "ag-grid-community";
 import type { header } from "./vaiableTypes";
 import eventDetailJson from "../data/source.json";
@@ -20,8 +20,6 @@ function AgGrid() {
       Event: item.event,
     }))
   );
-
-  const gridRef = useRef(null);
 
   const handleExportToExcel = () => {
     // Create a new workbook
