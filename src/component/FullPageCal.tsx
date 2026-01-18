@@ -1,9 +1,14 @@
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import eventDetailJson from "../data/source.json";
+import rNoorJson from "../data/source.json";
+import shaikhJson from "../data/source1.json";
 import { useState } from "react";
 
-function FullPageCalendar() {
+interface FullPageCalendarProps {
+  locationHref: string;
+}
+
+function FullPageCalendar({ locationHref }: FullPageCalendarProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   //eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
@@ -25,7 +30,7 @@ function FullPageCalendar() {
         plugins={[dayGridPlugin]}
         initialView="dayGridMonth"
         weekends={true}
-        events={eventDetail()}
+        events={eventDetail(locationHref)}
         eventClick={handleEventClickWrapper}
       />
 
@@ -69,14 +74,22 @@ function FullPageCalendar() {
   );
 }
 
-function eventDetail() {
+function eventDetail(locationHref: string) {
   const color = ["Red", "Blue", "Green", "Purple"];
   //eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return eventDetailJson.map((item: any) => ({
+  return setJsonData(locationHref).map((item: any) => ({
     title: item.event + " - " + item.name,
     date: item.format,
     color: color[Math.floor(Math.random() * color.length)],
   }));
+}
+
+function setJsonData(locationHref: string) {
+  if (locationHref.includes("shaikh-family")) {
+    return shaikhJson;
+  } else {
+    return rNoorJson;
+  }
 }
 
 export default FullPageCalendar;
