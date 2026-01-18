@@ -4,21 +4,34 @@ import { AgGridReact } from "ag-grid-react";
 import { useState, useMemo } from "react";
 import { themeQuartz } from "ag-grid-community";
 import type { header } from "./vaiableTypes";
-import eventDetailJson from "../data/source.json";
+import rNoorJson from "../data/source.json";
+import shaikhJson from "../data/source1.json";
 import * as XLSX from "xlsx";
 
 // Register all Community features
 ModuleRegistry.registerModules([AllCommunityModule]);
 
-function AgGrid() {
+interface AgGridProps {
+  locationHref: string;
+}
+
+function setJsonData(locationHref: string) {
+  if (locationHref.includes("shaikh-family")) {
+    return shaikhJson;
+  } else {
+    return rNoorJson;
+  }
+}
+
+function AgGrid({ locationHref }: AgGridProps) {
   const [rowData] = useState<header[]>(
     //eslint-disable-next-line @typescript-eslint/no-explicit-any
-    eventDetailJson.map((item: any) => ({
+    setJsonData(locationHref).map((item: any) => ({
       Month: item.month,
       Name: item.name,
       Date: item.date,
       Event: item.event,
-    }))
+    })),
   );
 
   const handleExportToExcel = () => {
@@ -98,7 +111,7 @@ function AgGrid() {
           Export as Excel
         </button>
         <a
-          href="https://calendar.google.com/calendar/u/0?cid=OTFmYWNjZmM2NDM0OTI1NjZhZWZjMTc2NDUyMWVkODU3YWQ2ZjNmZDRhM2RhYWJjMzBkMWEyNWU3OTQyZGEzMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t"
+          href={subsButton(locationHref)}
           target="_blank"
           className="subscribe-button"
         >
@@ -107,6 +120,14 @@ function AgGrid() {
       </div>
     </>
   );
+}
+
+function subsButton(locationHref: string) {
+  if (locationHref.includes("shaikh-family")) {
+    return "https://calendar.google.com/calendar/u/0?cid=ZjlhMzMxMTgzODBlNTRmMTUwZTg5MDg3MmE3YmUzZjQ4MzQ4YWI2NjhjYjZiMzY1NjIyZGQyZTMyN2U3ZmMxN0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t"; // Shaikh
+  } else {
+    return "https://calendar.google.com/calendar/u/0?cid=OTFmYWNjZmM2NDM0OTI1NjZhZWZjMTc2NDUyMWVkODU3YWQ2ZjNmZDRhM2RhYWJjMzBkMWEyNWU3OTQyZGEzMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t"; // R Noor
+  }
 }
 
 export default AgGrid;
